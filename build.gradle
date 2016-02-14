@@ -1,33 +1,32 @@
-apply plugin: 'java'
-apply plugin: 'eclipse'
+plugins {
+    id 'java'
+    id 'eclipse'
+	id 'org.asciidoctor.convert' version '1.5.3'
+}
+
+group 'at.aygu'
+version = '0.1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
-
-version = '1.0'
-
-jar {
-    manifest {
-        attributes 'Implementation-Title': 'Gradle Quickstart',
-                   'Implementation-Version': version
-    }
-}
 
 repositories {
     mavenCentral()
 }
 
+// Plugin configurations
+asciidoctor {
+	sourceDir 'docs/'
+	outputDir 'build/docs'
+	options doctype: 'book'
+}
+
 dependencies {
-    testCompile 'junit:junit:4.+'
+    testCompile 'junit:junit:4.12'
 }
 
 test {
     systemProperties 'property': 'value'
 }
 
-uploadArchives {
-    repositories {
-       flatDir {
-           dirs 'repos'
-       }
-    }
-}
+
+

@@ -1,1 +1,3 @@
 rootProject.name = 'webstarter'
+
+include 'webstarter-client'
